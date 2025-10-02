@@ -1,0 +1,46 @@
+{
+	"folders": [
+		{
+			"path": ".github"
+		},
+		{
+			"path": ".project"
+		},
+		{
+			"path": ".vscode"
+		},
+		{
+			"path": "ai-content-creator"
+		},
+		{
+			"path": "dashboard"
+		},
+		{
+			"path": "design-system"
+		},
+		{
+			"path": "files"
+		},
+		{
+			"path": "lib"
+		},
+		{
+			"path": "node_modules"
+		},
+		{
+			"path": "scripts"
+		},
+		{
+			"path": "src"
+		},
+		{
+			"path": "veridium"
+		},
+		{
+			"path": "web"
+		},
+		{
+			"path": "../../.."
+		}
+	]
+}

@@ -1,0 +1,366 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Quantum Theme Class */
+.quantum-theme {
+  background: var(--quantum-dark);
+  color: var(--quantum-light);
+  font-family: var(--quantum-font-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.quantum-theme * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  padding: 0;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm
+    font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-600;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary-600 text-white hover:bg-secondary-700 focus:ring-secondary-600;
+  }
+
+  .btn-outline {
+    @apply border border-gray-300 bg-transparent hover:bg-gray-50 focus:ring-gray-600;
+  }
+
+  .input {
+    @apply flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .card {
+    @apply rounded-lg border bg-white text-gray-950 shadow-sm;
+  }
+
+  /* Quantum Theme Components for Luxury Chauffeur Service */
+  .quantum-text {
+    @apply bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 bg-clip-text text-transparent;
+    background-size: 200% 200%;
+    animation: quantumShimmer 3s ease-in-out infinite;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .quantum-btn {
+    @apply relative inline-flex items-center justify-center px-8 py-4 font-bold text-white uppercase tracking-wider transition-all duration-300 transform hover:scale-105 hover:shadow-2xl;
+    background: linear-gradient(135deg, #1e40af 0%, #3730a3 50%, #1e40af 100%);
+    background-size: 200% 200%;
+    border: 2px solid transparent;
+    box-shadow: 0 4px 15px rgba(30, 64, 175, 0.4);
+  }
+
+  .quantum-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .quantum-btn:hover::before {
+    left: 100%;
+  }
+
+  .quantum-btn.primary {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #dc2626 100%);
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+  }
+
+  .quantum-btn.secondary {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 50%, #6b7280 100%);
+    box-shadow: 0 4px 15px rgba(107, 114, 128, 0.4);
+  }
+
+  .quantum-btn.large {
+    @apply px-12 py-6 text-lg;
+  }
+
+  .quantum-card {
+    @apply relative bg-gradient-to-br from-gray-800 via-gray-900 to-black border border-gray-700 rounded-2xl p-8 shadow-2xl overflow-hidden;
+    backdrop-filter: blur(10px);
+  }
+
+  .quantum-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #60a5fa, transparent);
+    animation: quantumScan 3s linear infinite;
+  }
+
+  .quantum-card .card-visual {
+    @apply relative mb-6;
+  }
+
+  .quantum-card .card-features {
+    @apply flex flex-wrap gap-2 justify-center;
+  }
+
+  .quantum-card .card-features .feature {
+    @apply px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-xs font-medium border border-blue-700/50;
+  }
+
+  .feature {
+    @apply px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-xs font-medium border border-blue-700/50;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+
+  .badge-primary {
+    @apply border-transparent bg-primary-100 text-primary-800 hover:bg-primary-200;
+  }
+
+  .badge-secondary {
+    @apply border-transparent bg-secondary-100 text-secondary-800 hover:bg-secondary-200;
+  }
+
+  .badge-success {
+    @apply border-transparent bg-success-100 text-success-800 hover:bg-success-200;
+  }
+
+  .badge-danger {
+    @apply border-transparent bg-danger-100 text-danger-800 hover:bg-danger-200;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .container {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-bounce-gentle {
+    animation: bounceGentle 2s ease-in-out infinite;
+  }
+
+  /* UHNW Luxury Utilities */
+  .uhnw-gold {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: goldShimmer 3s ease-in-out infinite;
+  }
+
+  .holographic-glow {
+    position: relative;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .holographic-glow::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #dda0dd, #98d8c8);
+    background-size: 400% 400%;
+    border-radius: 10px;
+    z-index: -1;
+    animation: holographicShift 4s ease-in-out infinite;
+  }
+
+  .stellar-particle {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stellar-particle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, #ffffff 0%, #667eea 50%, transparent 100%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: stellarTwinkle 2s ease-in-out infinite;
+  }
+
+  .uhnw-glow {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3), 0 0 40px rgba(255, 215, 0, 0.1), 0 0 60px rgba(255, 215, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .uhnw-glow:hover {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5), 0 0 60px rgba(255, 215, 0, 0.2), 0 0 90px rgba(255, 215, 0, 0.1);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Leaflet map styles */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+
+.leaflet-control-attribution {
+  font-size: 10px !important;
+}
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* UHNW Luxury Animations */
+@keyframes goldShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes holographicShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes stellarTwinkle {
+  0%, 100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+@keyframes uhnwGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3), 0 0 40px rgba(255, 215, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6), 0 0 60px rgba(255, 215, 0, 0.3);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+
+  .card {
+    @apply rounded-md;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-break-after {
+    page-break-after: always;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn {
+    @apply border-2;
+  }
+
+  .card {
+    @apply border-2;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

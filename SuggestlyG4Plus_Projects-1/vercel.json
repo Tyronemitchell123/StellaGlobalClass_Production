@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "name": "stella-global-class-production",
+  "builds": [
+    {
+      "src": "auto-start-production-enhanced.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/health",
+      "dest": "/auto-start-production-enhanced.js"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/auto-start-production-enhanced.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/auto-start-production-enhanced.js"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "PORT": "3000"
+  },
+  "regions": ["iad1"],
+  "functions": {
+    "auto-start-production-enhanced.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  }
+}

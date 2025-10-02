@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Veridian Concierge - World's most exclusive AI-powered lifestyle management platform. Sovereign-grade service, digital twins, and global stewardship for ultra-high-net-worth families.">
+    <meta name="keywords" content="AI concierge, digital twin, luxury lifestyle management, UHNW services, sovereign concierge, AI-powered luxury, global stewardship, daily AI insights">
+    <meta name="author" content="Veridian Concierge Atelier">
+    <meta property="og:title" content="Veridian Concierge - Sovereign AI Lifestyle Management">
+    <meta property="og:description" content="Experience sovereign-grade AI concierge with digital twins, personalized insights, and global stewardship for the world's most discerning families.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://veridianconcierge.com">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1526481280695-3c4691d21b99?auto=format&fit=crop&w=1200&q=80">
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="manifest" href="web/manifest.json">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
+
+    <title>Veridian Concierge - Sovereign AI Lifestyle Management</title>
+
+    <!-- Critical CSS -->
+    <link rel="stylesheet" href="veridian.css">
+
+    <style>
+        /* Override for inline compatibility with veridian.css */
+        :root {
+            --primary-dark: #0a0a1a;
+            --primary: #1a1a3a;
+            --secondary: #252547;
+            --tertiary: #2d2d5f;
+
+            --gold: #ffd700;
+            --gold-dark: #b8860b;
+            --gold-light: #ffed4e;
+            --emerald: #50c878;
+            --cyan: #00d4ff;
+            --purple: #9b59b6;
+            --pink: #ff6b9d;
+
+            --text-primary: #ffffff;
+            --text-secondary: #d1d1d1;
+            --text-muted: #a0a0a0;
+
+            --success: #00d4aa;
+            --warning: #ff9500;
+            --danger: #ff4757;
+            --info: #3742fa;
+
+            /* Gradients */
+            --grad-primary: linear-gradient(
+              135deg,
+              var(--primary-dark) 0%,
+              var(--primary) 55%,
+              #0e0e27 100%
+            );
+            --grad-secondary: linear-gradient(
+              135deg,
+              var(--secondary) 0%,
+              var(--tertiary) 100%
+            );
+            --grad-gold: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            --grad-emerald: linear-gradient(135deg, var(--success) 0%, #00a085 100%);
+            --grad-cyan: linear-gradient(135deg, var(--cyan) 0%, #0099cc 100%);
+            --grad-rainbow: linear-gradient(
+              135deg,
+              var(--gold),
+              var(--emerald),
+              var(--cyan),
+              var(--purple)
+            );
+
+            /* Elevation - Dark shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.45);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.55);
+            --shadow-gold: 0 0 30px rgba(255, 215, 0, 0.3);
+            --shadow-rainbow:
+              0 0 50px rgba(255, 215, 0, 0.4), 0 0 80px rgba(0, 212, 170, 0.3),
+              0 0 100px rgba(0, 212, 255, 0.25);
+
+            /* Radii */
+            --r-sm: 8px;
+            --r-md: 12px;
+            --r-lg: 16px;
+            --r-xl: 20px;
+            --r-2xl: 24px;
+            --r-full: 9999px;
+
+            /* Spacing */
+            --s-2: 0.5rem;
+            --s-3: 0.75rem;
+            --s-4: 1rem;
+            --s-6: 1.5rem;
+            --s-8: 2rem;
+            --s-12: 3rem;
+            --s-16: 4rem;
+            --s-24: 6rem;
+
+            /* Motion */
+            --ease: cubic-bezier(0.4, 0, 0.2, 1);
+            --t-fast: 200ms var(--ease);
+            --t: 300ms var(--ease);
+            --t-slow: 500ms var(--ease);
+            --t-bounce: 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        /* EQ Mode (Light Override) */
+        body.eq-mode {
+            /* Palette */
+            --primary-dark: #f8f9ff;
+            --primary: #e8ecff;
+            --secondary: #d4d8ff;
+            --tertiary: #c0c4ff;
+
+            --gold: #ffd700;
+            --gold-dark: #b8860b;
+            --gold-light: #ffed4e;
+            --emerald: #50c878;
+            --cyan: #00d4ff;
+            --purple: #9b59b6;
+            --pink: #ff6b9d;
+
+            --text-primary: #1a1a3a;
+            --text-secondary: #4a4a6a;
+            --text-muted: #7a7a9a;
+
+            --success: #00d4aa;
+            --warning: #ff9500;
+            --danger: #ff4757;
+            --info: #3742fa;
+
+            /* Gradients */
+            --grad-primary: linear-gradient(
+              135deg,
+              var(--primary-dark) 0%,
+              var(--primary) 55%,
+              #d4d8ff 100%
+            );
+            --grad-secondary: linear-gradient(
+              135deg,
+              var(--secondary) 0%,
+              var(--tertiary) 100%
+            );
+            --grad-gold: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            --grad-emerald: linear-gradient(135deg, var(--success) 0%, #00a085 100%);
+            --grad-cyan: linear-gradient(135deg, var(--cyan) 0%, #0099cc 100%);
+            --grad-rainbow: linear-gradient(
+              135deg,
+              var(--gold),
+              var(--emerald),
+
+        /* Custom overrides for this page */
+        body {
+            background: var(--grad-primary);
+        }
+
+        header {
+            background: rgba(10, 10, 26, 0.85);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .logo {
+            color: var(--text-primary);
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .hero {
+            background: var(--grad-primary);
+            color: var(--text-primary);
+        }
+
+        .hero h1 {
+            background: var(--grad-rainbow);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowShift 4s ease-in-out infinite;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--gold), var(--emerald), var(--cyan), var(--gold));
+            border-radius: 0.5em;
+            z-index: -1;
+            opacity: 0.3;
+            animation: glowPulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowPulse {
+            from { opacity: 0.3; transform: scale(1); }
+            to { opacity: 0.6; transform: scale(1.02); }
+        }
+
+        @keyframes rainbowShift {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+        }
+
+        .cta-button {
+            background: var(--grad-gold);
+            color: #201a00;
+            border: none;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .cta-button:hover {
+            box-shadow: var(--shadow-xl), var(--shadow-gold);
+            transform: translateY(-2px);
+        }
+
+        .features {
+            background: var(--grad-secondary);
+        }
+
+        .feature-card {
+            background: linear-gradient(
+              135deg,
+              rgba(255, 255, 255, 0.12),
+              rgba(255, 255, 255, 0.04)
+            );
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-card:hover {
+            border-color: rgba(255, 215, 0, 0.6);
+            box-shadow: var(--shadow-xl), var(--shadow-gold);
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: var(--gold);
+        }
+
+        footer {
+            background: var(--grad-primary);
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            color: var(--text-secondary);
+        }
+
+        footer a {
+            color: var(--gold);
+        }
+
+        /* EQ/G4 Toggle Switch */
+        .mode-toggle {
+          display: flex;
+          align-items: center;
+        }
+
+        .toggle-switch {
+          position: relative;
+          display: inline-block;
+          width: 80px;
+          height: 36px;
+        }
+
+        .toggle-switch input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+
+        .toggle-slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, var(--secondary), var(--tertiary));
+          border: 2px solid var(--gold);
+          border-radius: var(--r-full);
+          transition: var(--t);
+          overflow: hidden;
+        }
+
+        .toggle-slider:before {
+          content: "";
+          position: absolute;
+          height: 28px;
+          width: 28px;
+          left: 4px;
+          bottom: 2px;
+          background: var(--grad-gold);
+          border-radius: var(--r-full);
+          transition: var(--t-bounce);
+          box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+        }
+
+        .toggle-label {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          font-weight: 700;
+          font-size: 0.75rem;
+          letter-spacing: 0.05em;
+          transition: var(--t);
+          pointer-events: none;
+        }
+
+        .eq-label {
+          left: 8px;
+          color: var(--text-secondary);
+        }
+
+        .g4-label {
+          right: 8px;
+          color: var(--text-secondary);
+        }
+
+        input:checked + .toggle-slider {
+          background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+          box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        input:checked + .toggle-slider:before {
+          transform: translateX(44px);
+        }
+
+        input:checked + .toggle-slider .eq-label {
+          color: var(--text-muted);
+        }
+
+        input:checked + .toggle-slider .g4-label {
+          color: var(--primary-dark);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            nav {
+                padding: 0 1rem;
+            }
+
+            .mode-toggle {
+                margin-left: auto;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Veridian Concierge</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mode-toggle">
+                <span class="toggle-label eq-label">EQ</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="eqG4Toggle">
+                    <span class="toggle-slider">
+                        <span class="toggle-label g4-label">G4</span>
+                    </span>
+                </label>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h1>Sovereign AI Lifestyle Management</h1>
+            <p>Experience the pinnacle of luxury with Veridian Concierge – the world's most exclusive AI-powered platform for ultra-high-net-worth families. Seamless integration of digital twins, personalized insights, and global stewardship.</p>
+            <a href="#features" class="cta-button">Discover Sovereign Service</a>
+        </section>
+
+        <section id="features" class="features">
+            <h2 style="text-align: center; font-size: 3rem; margin-bottom: 3rem;">Our Sovereign Services</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>AI-Powered Concierge</h3>
+                    <p>Anticipate your needs with intelligent, proactive assistance. From itinerary orchestration to bespoke recommendations, our AI ensures unparalleled discretion and efficiency.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Digital Twins</h3>
+                    <p>Create virtual replicas of your lifestyle for simulation and optimization. Secure, sovereign-grade digital twins empower strategic decision-making in privacy.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Global Stewardship</h3>
+                    <p>Worldwide network of experts delivering seamless management across continents. Heritage preservation, asset oversight, and legacy planning with AI precision.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Daily AI Insights</h3>
+                    <p>Curated intelligence on markets, wellness, and opportunities. Personalized dashboards deliver foresight tailored to your vision and values.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" style="background: var(--primary-color);">
+            <h2 style="text-align: center; font-size: 3rem; margin-bottom: 3rem;">The Veridian Difference</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.2rem; color: var(--text-secondary);">Crafted for the most discerning families, Veridian blends cutting-edge AI with human artistry. Sovereign privacy, eternal discretion, and transformative stewardship define our atelier approach.</p>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <p>&copy; 2024 Veridian Concierge Atelier. All rights reserved. | <a href="mailto:info@veridianconcierge.com" style="color: var(--accent-color);">Contact Us</a></p>
+    </footer>
+
+    <script>
+        // Page initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simple smooth scroll for nav links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // EQ/G4 Toggle functionality - Default to G4 (dark)
+            const eqG4Toggle = document.getElementById('eqG4Toggle');
+            if (eqG4Toggle) {
+                // Load saved mode, default to 'g4' if none
+                const savedMode = localStorage.getItem('veridianMode') || 'g4';
+                if (savedMode === 'eq') {
+                    document.body.classList.add('eq-mode');
+                    eqG4Toggle.checked = false;
+                } else {
+                    document.body.classList.add('g4-mode'); // Explicit for clarity
+                    eqG4Toggle.checked = true;
+                }
+
+                eqG4Toggle.addEventListener('change', function() {
+                    if (this.checked) {
+                        document.body.classList.remove('eq-mode');
+                        document.body.classList.add('g4-mode');
+                        localStorage.setItem('veridianMode', 'g4');
+                    } else {
+                        document.body.classList.remove('g4-mode');
+                        document.body.classList.add('eq-mode');
+                        localStorage.setItem('veridianMode', 'eq');
+                    }
+                });
+            }
+
+            // Clear localStorage on load if needed (one-time fix for light default issue)
+            if (localStorage.getItem('veridianMode') === null) {
+                localStorage.setItem('veridianMode', 'g4');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: "Warm up"
+    - duration: 120
+      arrivalRate: 10
+      name: "Sustained load"
+    - duration: 60
+      arrivalRate: 20
+      name: "Spike test"
+  processor: "./test-functions.js"
+
+scenarios:
+  - name: "Health Check Load Test"
+    weight: 30
+    flow:
+      - get:
+          url: "/health"
+          expect:
+            - statusCode: 200
+            - contentType: json
+            - hasProperty: status
+
+  - name: "API Premium Load Test"
+    weight: 25
+    flow:
+      - get:
+          url: "/api/premium"
+          expect:
+            - statusCode: 200
+            - contentType: json
+            - hasProperty: premium
+
+  - name: "API Metrics Load Test"
+    weight: 25
+    flow:
+      - get:
+          url: "/api/metrics"
+          expect:
+            - statusCode: 200
+            - contentType: json
+            - hasProperty: uptime
+
+  - name: "API Domains Load Test"
+    weight: 20
+    flow:
+      - get:
+          url: "/api/domains"
+          expect:
+            - statusCode: 200
+            - contentType: json
+            - hasProperty: domains
+
+  - name: "Mixed Endpoint Test"
+    weight: 10
+    flow:
+      - get:
+          url: "/health"
+      - think: 1
+      - get:
+          url: "/api/premium"
+      - think: 1
+      - get:
+          url: "/api/metrics"
+      - think: 1
+      - get:
+          url: "/api/domains"

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veridian - Modern Application Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Veridian</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#features" class="nav-link">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#camera-bot" class="nav-link">Camera Bot</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#ai-assistant" class="nav-link">AI Assistant</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Welcome to Veridian</h1>
+                <p class="hero-subtitle">Modern application platform with advanced features and capabilities</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary">Get Started</button>
+                    <button class="btn btn-secondary">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-graphic">
+                    <i class="fas fa-rocket"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="features-container">
+            <h2 class="section-title">Powerful Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Optimized performance for seamless user experience</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure</h3>
+                    <p>Enterprise-grade security to protect your data</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <h3>Scalable</h3>
+                    <p>Grow your application without limits</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Developer Friendly</h3>
+                    <p>Modern tools and APIs for easy integration</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Responsive</h3>
+                    <p>Perfect experience on all devices</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Analytics</h3>
+                    <p>Comprehensive insights and reporting</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Camera Bot Section -->
+    <section id="camera-bot" class="camera-bot">
+        <div class="camera-bot-container">
+            <h2 class="section-title">Camera Bot</h2>
+            <p class="camera-bot-subtitle">AI-powered camera assistant for smart image processing</p>
+            
+            <div class="camera-bot-content">
+                <div class="camera-interface">
+                    <div class="camera-viewfinder">
+                        <video id="camera-video" autoplay playsinline></video>
+                        <canvas id="camera-canvas" style="display: none;"></canvas>
+                        <div class="camera-controls">
+                            <button id="start-camera" class="camera-btn">
+                                <i class="fas fa-camera"></i> Start Camera
+                            </button>
+                            <button id="capture-photo" class="camera-btn" style="display: none;">
+                                <i class="fas fa-camera-retro"></i> Capture
+                            </button>
+                            <button id="stop-camera" class="camera-btn" style="display: none;">
+                                <i class="fas fa-stop"></i> Stop
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="camera-features">
+                        <div class="feature-toggle">
+                            <label class="switch">
+                                <input type="checkbox" id="face-detection">
+                                <span class="slider"></span>
+                            </label>
+                            <span>Face Detection</span>
+                        </div>
+                        <div class="feature-toggle">
+                            <label class="switch">
+                                <input type="checkbox" id="qr-scanner">
+                                <span class="slider"></span>
+                            </label>
+                            <span>QR Scanner</span>
+                        </div>
+                        <div class="feature-toggle">
+                            <label class="switch">
+                                <input type="checkbox" id="object-detection">
+                                <span class="slider"></span>
+                            </label>
+                            <span>Object Detection</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="camera-info">
+                    <div class="info-card">
+                        <h3>Smart Camera Features</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Real-time face detection and recognition</li>
+                            <li><i class="fas fa-check"></i> QR code and barcode scanning</li>
+                            <li><i class="fas fa-check"></i> Object detection and classification</li>
+                            <li><i class="fas fa-check"></i> Image enhancement and filtering</li>
+                            <li><i class="fas fa-check"></i> Document scanning and OCR</li>
+                            <li><i class="fas fa-check"></i> Augmented reality overlays</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="captured-images">
+                        <h4>Captured Images</h4>
+                        <div id="image-gallery" class="image-gallery">
+                            <p class="no-images">No images captured yet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Assistant Section -->
+    <section id="ai-assistant" class="ai-assistant">
+        <div class="ai-assistant-container">
+            <h2 class="section-title">AI Assistant</h2>
+            <p class="ai-assistant-subtitle">Intelligent chatbot for customer support and automated assistance</p>
+            
+            <div class="ai-assistant-content">
+                <div class="chat-interface">
+                    <div class="chat-header">
+                        <div class="chat-info">
+                            <div class="bot-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="bot-details">
+                                <h3>Veridian AI Assistant</h3>
+                                <p class="bot-status">Online</p>
+                            </div>
+                        </div>
+                        <div class="chat-actions">
+                            <button class="chat-action-btn" id="clear-chat">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <button class="chat-action-btn" id="minimize-chat">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message bot-message">
+                            <div class="message-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-content">
+                                <p>Hello! I'm Veridian AI Assistant. How can I help you today?</p>
+                                <span class="message-time">Just now</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-container">
+                        <div class="chat-options">
+                            <button class="quick-option" data-message="Tell me about Veridian features">
+                                <i class="fas fa-star"></i> Features
+                            </button>
+                            <button class="quick-option" data-message="How do I get started?">
+                                <i class="fas fa-rocket"></i> Get Started
+                            </button>
+                            <button class="quick-option" data-message="I need technical support">
+                                <i class="fas fa-cog"></i> Support
+                            </button>
+                            <button class="quick-option" data-message="Pricing information">
+                                <i class="fas fa-dollar-sign"></i> Pricing
+                            </button>
+                        </div>
+                        <div class="chat-input-area">
+                            <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off">
+                            <button class="send-btn" id="send-message">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ai-features">
+                    <div class="feature-panel">
+                        <h3>AI Capabilities</h3>
+                        <div class="capability-list">
+                            <div class="capability-item">
+                                <i class="fas fa-headset"></i>
+                                <div class="capability-info">
+                                    <h4>Customer Support</h4>
+                                    <p>24/7 automated customer service with intelligent responses</p>
+                                </div>
+                            </div>
+                            <div class="capability-item">
+                                <i class="fas fa-brain"></i>
+                                <div class="capability-info">
+                                    <h4>AI Assistant</h4>
+                                    <p>Smart recommendations and personalized assistance</p>
+                                </div>
+                            </div>
+                            <div class="capability-item">
+                                <i class="fas fa-comments"></i>
+                                <div class="capability-info">
+                                    <h4>Live Chat</h4>
+                                    <p>Real-time messaging with seamless human handoff</p>
+                                </div>
+                            </div>
+                            <div class="capability-item">
+                                <i class="fas fa-envelope"></i>
+                                <div class="capability-info">
+                                    <h4>Automated Messaging</h4>
+                                    <p>Smart notifications and proactive engagement</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="live-chat-panel">
+                        <h3>Live Chat Integration</h3>
+                        <div class="chat-stats">
+                            <div class="stat-item">
+                                <div class="stat-number" id="active-agents">5</div>
+                                <div class="stat-label">Active Agents</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="wait-time">2m</div>
+                                <div class="stat-label">Wait Time</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="satisfaction">98%</div>
+                                <div class="stat-label">Satisfaction</div>
+                            </div>
+                        </div>
+                        <div class="agent-status">
+                            <h4>Available Agents</h4>
+                            <div class="agent-list">
+                                <div class="agent-item">
+                                    <div class="agent-avatar online"></div>
+                                    <div class="agent-info">
+                                        <span class="agent-name">Sarah Chen</span>
+                                        <span class="agent-specialty">Technical Support</span>
+                                    </div>
+                                </div>
+                                <div class="agent-item">
+                                    <div class="agent-avatar online"></div>
+                                    <div class="agent-info">
+                                        <span class="agent-name">Mike Johnson</span>
+                                        <span class="agent-specialty">Sales</span>
+                                    </div>
+                                </div>
+                                <div class="agent-item">
+                                    <div class="agent-avatar busy"></div>
+                                    <div class="agent-info">
+                                        <span class="agent-name">Emily Davis</span>
+                                        <span class="agent-specialty">Customer Success</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" id="request-human">Request Human Agent</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="about-content">
+                <h2 class="section-title">About Veridian</h2>
+                <p>Veridian is a cutting-edge application platform designed to empower developers and businesses with modern tools and capabilities. Built with the latest technologies, Veridian provides a robust foundation for creating scalable, secure, and performant applications.</p>
+                <p>Our platform combines ease of use with powerful features, making it the perfect choice for startups and enterprises alike.</p>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h3>99.9%</h3>
+                        <p>Uptime</p>
+                    </div>
+                    <div class="stat">
+                        <h3>50ms</h3>
+                        <p>Avg Response</p>
+                    </div>
+                    <div class="stat">
+                        <h3>24/7</h3>
+                        <p>Support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>hello@veridian.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>San Francisco, CA</span>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Veridian</h3>
+                    <p>Modern application platform for the future</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Veridian. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
