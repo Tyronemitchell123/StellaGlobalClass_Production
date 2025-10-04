@@ -1,10 +1,14 @@
 {
    "version": 2,
-   "routes": [
+   "builds": [
      {
-       "src": "/(.*)",
-       "dest": "/$1"
+       "src": "SuggestlyG4Plus_Projects-1/domains/newdomain/package.json",
+       "use": "@vercel/next"
      }
    ],
-   "outputDirectory": "."
- }
+   "functions": {
+     "SuggestlyG4Plus_Projects-1/domains/newdomain/app/**/*.js": {
+       "runtime": "nodejs18.x"
+     }
+   }
+}
