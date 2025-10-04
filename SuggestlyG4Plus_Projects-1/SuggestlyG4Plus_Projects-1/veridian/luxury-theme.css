@@ -1,0 +1,277 @@
+/* Luxury Theme - Global Color Application */
+/* Unified Design System - Beyond Limits */
+
+@import url("design-system-tokens.css");
+
+/* ===========================================
+   GLOBAL COLOR APPLICATION
+   =========================================== */
+
+body {
+  background: var(--color-primary-navy);
+  color: var(--color-neutral-50);
+  font-family: 'Inter', sans-serif;
+}
+
+/* ===========================================
+   NAVIGATION
+   =========================================== */
+
+.luxury-nav {
+  background: linear-gradient(135deg, var(--color-primary-navy), var(--color-primary-navy-light));
+  box-shadow: var(--shadow-lg);
+}
+
+.nav-logo .gold-icon {
+  color: var(--color-primary-gold);
+}
+
+.nav-link {
+  color: var(--color-neutral-50);
+}
+
+.nav-link:hover {
+  color: var(--color-primary-gold);
+}
+
+.btn-primary-gold {
+  background: linear-gradient(135deg, var(--color-primary-gold), var(--color-primary-gold-dark));
+  color: var(--color-primary-navy);
+  border: none;
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-primary-gold:hover {
+  background: linear-gradient(135deg, var(--color-primary-gold-light), var(--color-primary-gold));
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* ===========================================
+   HERO SECTION
+   =========================================== */
+
+.hero-luxury {
+  background: linear-gradient(135deg, var(--color-primary-navy), var(--color-neutral-900));
+  color: var(--color-neutral-50);
+}
+
+.hero-title .gold-text {
+  color: var(--color-primary-gold);
+}
+
+.hero-badge {
+  background: linear-gradient(135deg, var(--color-primary-gold), var(--color-primary-gold-light));
+  color: var(--color-primary-navy);
+}
+
+.hero-metrics .metric-value {
+  color: var(--color-primary-gold);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--color-primary-gold);
+  color: var(--color-primary-gold);
+}
+
+.btn-secondary:hover {
+  background: var(--color-primary-gold);
+  color: var(--color-primary-navy);
+}
+
+/* ===========================================
+   SECTIONS
+   =========================================== */
+
+.section-title .gold-text {
+  color: var(--color-primary-gold);
+}
+
+.section-badge {
+  background: linear-gradient(135deg, var(--color-primary-gold), var(--color-primary-gold-light));
+  color: var(--color-primary-navy);
+}
+
+/* ===========================================
+   INTELLIGENCE CARDS
+   =========================================== */
+
+.intelligence-card {
+  background: linear-gradient(145deg, var(--color-neutral-50), var(--color-neutral-100));
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.card-icon {
+  color: var(--color-primary-gold);
+}
+
+.card-features .feature-tag {
+  background: var(--color-primary-gold);
+  color: var(--color-primary-navy);
+}
+
+/* ===========================================
+   TRUST CARDS
+   =========================================== */
+
+.trust-card {
+  background: linear-gradient(145deg, var(--color-neutral-50), var(--color-neutral-100));
+  color: var(--color-neutral-900);
+}
+
+.trust-icon {
+  color: var(--color-primary-gold);
+}
+
+.trust-features .trust-tag {
+  background: var(--color-primary-gold);
+  color: var(--color-primary-navy);
+}
+
+/* ===========================================
+   PRICING CARDS
+   =========================================== */
+
+.pricing-card {
+  background: linear-gradient(145deg, var(--color-neutral-50), var(--color-neutral-100));
+  color: var(--color-neutral-900);
+}
+
+.pricing-card.silver .card-icon {
+  color: var(--color-secondary-silver);
+}
+
+.pricing-card.gold .card-icon {
+  color: var(--color-primary-gold);
+}
+
+.pricing-card.platinum .card-icon {
+  color: var(--color-secondary-platinum);
+}
+
+.pricing-card.diamond .card-icon {
+  color: var(--color-primary-gold);
+}
+
+.card-price .currency,
+.card-price .amount {
+  color: var(--color-primary-gold);
+}
+
+.btn-card {
+  background: linear-gradient(135deg, var(--color-primary-gold), var(--color-primary-gold-dark));
+  color: var(--color-primary-navy);
+}
+
+.btn-card:hover {
+  background: linear-gradient(135deg, var(--color-primary-gold-light), var(--color-primary-gold));
+}
+
+/* ===========================================
+   COLLABORATOR CARDS
+   =========================================== */
+
+.collaborator-card {
+  background: linear-gradient(145deg, var(--color-neutral-50), var(--color-neutral-100));
+  color: var(--color-neutral-900);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--color-primary-gold);
+  color: var(--color-primary-gold);
+}
+
+.btn-secondary:hover {
+  background: var(--color-primary-gold);
+  color: var(--color-primary-navy);
+}
+
+/* ===========================================
+   CONTACT FORM
+   =========================================== */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--color-neutral-50);
+  border: 2px solid var(--color-neutral-300);
+  color: var(--color-neutral-900);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--color-primary-gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+/* ===========================================
+   TODO SECTION
+   =========================================== */
+
+.todo-form input,
+.todo-form select {
+  background: var(--color-neutral-50);
+  border: 2px solid var(--color-neutral-300);
+  color: var(--color-neutral-900);
+}
+
+.todo-form input:focus,
+.todo-form select:focus {
+  border-color: var(--color-primary-gold);
+}
+
+.filter-btn.active {
+  background: var(--color-primary-gold);
+  color: var(--color-primary-navy);
+}
+
+.sort-btn.active {
+  background: var(--color-primary-gold);
+  color: var(--color-primary-navy);
+}
+
+.btn-export,
+.btn-import {
+  background: var(--color-primary-gold);
+  color: var(--color-primary-navy);
+}
+
+/* ===========================================
+   FOOTER
+   =========================================== */
+
+.footer {
+  background: linear-gradient(135deg, var(--color-primary-navy), var(--color-neutral-900));
+  color: var(--color-neutral-50);
+}
+
+.footer-logo i {
+  color: var(--color-primary-gold);
+}
+
+.footer a {
+  color: var(--color-neutral-50);
+}
+
+.footer a:hover {
+  color: var(--color-primary-gold);
+}
+
+/* ===========================================
+   RESPONSIVE ADJUSTMENTS
+   =========================================== */
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: var(--font-size-4xl);
+  }
+
+  .section-title {
+    font-size: var(--font-size-3xl);
+  }
+}

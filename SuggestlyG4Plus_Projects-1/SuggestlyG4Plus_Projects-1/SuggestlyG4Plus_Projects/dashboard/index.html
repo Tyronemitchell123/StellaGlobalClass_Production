@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veridian Private Concierge Console - Elite Access</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="auth-overlay" class="auth-overlay">
+        <div class="login-form">
+            <div class="logo">
+                <i class="fas fa-crown"></i>
+                <h1>Veridian Private Concierge</h1>
+                <p>Elite Access Portal</p>
+            </div>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Username" autocomplete="username" required>
+                <input type="password" id="password" placeholder="Password" autocomplete="current-password" required>
+                <button type="submit">Enter Elite Console</button>
+                <p id="loginError" class="error hidden">Invalid credentials</p>
+            </form>
+        </div>
+    </div>
+
+    <div id="app" class="app hidden">
+        <header class="header">
+            <div class="nav-left">
+                <div class="logo">
+                    <i class="fas fa-crown"></i>
+                    <span>Veridian Private Concierge Console</span>
+                </div>
+            </div>
+            <div class="nav-center">
+                <nav>
+                    <a href="#" class="nav-link active" data-section="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    <a href="#" class="nav-link" data-section="cameras"><i class="fas fa-video"></i> Cameras</a>
+                    <a href="#" class="nav-link" data-section="ai"><i class="fas fa-brain"></i> AI Insights</a>
+                    <a href="#" class="nav-link" data-section="chat"><i class="fas fa-comments"></i> Concierge Chat</a>
+                    <a href="#" class="nav-link" data-section="contact"><i class="fas fa-envelope"></i> Contact</a>
+                </nav>
+            </div>
+            <div class="nav-right">
+                <div class="user-profile">
+                    <i class="fas fa-user"></i>
+                    <span>Admin</span>
+                    <button id="logoutBtn" type="button" class="logout-btn" aria-label="Logout"><i class="fas fa-sign-out-alt"></i></button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="section active">
+                <div class="metrics-grid">
+                    <div class="metric-card premium">
+                        <div class="metric-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="metric-value" id="cpuUsage">45%</div>
+                        <div class="metric-label">CPU Usage</div>
+                    </div>
+                    <div class="metric-card premium">
+                        <div class="metric-icon"><i class="fas fa-memory"></i></div>
+                        <div class="metric-value" id="memoryUsage">32%</div>
+                        <div class="metric-label">Memory Usage</div>
+                    </div>
+                    <div class="metric-card premium">
+                        <div class="metric-icon"><i class="fas fa-clock"></i></div>
+                        <div class="metric-value" id="latency">12ms</div>
+                        <div class="metric-label">System Latency</div>
+                    </div>
+                    <div class="metric-card premium">
+                        <div class="metric-icon"><i class="fas fa-brain"></i></div>
+                        <div class="metric-value" id="aiAccuracy">98.7%</div>
+                        <div class="metric-label">AI Accuracy</div>
+                    </div>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Active Cameras</h3>
+                        <div class="stat-number" id="activeCameras">24</div>
+                        <div class="stat-trend positive">+2 from yesterday</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Frames Processed</h3>
+                        <div class="stat-number" id="framesProcessed">1.2M</div>
+                        <div class="stat-trend positive">+15% growth</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Alerts Generated</h3>
+                        <div class="stat-number" id="alertsGenerated">3</div>
+                        <div class="stat-trend negative">Motion in Zone 1</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cameras Section -->
+            <section id="cameras" class="section">
+                <div class="cameras-grid">
+                    <div class="camera-feed premium">
+                        <div class="feed-header">
+                            <h3>Front Entrance</h3>
+                            <span class="status active">Live</span>
+                        </div>
+                        <div class="feed-video">
+                            <img src="https://via.placeholder.com/400x300/1a1a2e/ffffff?text=Front+Entrance" alt="Front Entrance">
+                        </div>
+                        <div class="feed-controls">
+                            <button type="button" class="control-btn" aria-label="Play stream"><i class="fas fa-play"></i></button>
+                            <button type="button" class="control-btn" aria-label="Stop stream"><i class="fas fa-stop"></i></button>
+                            <button type="button" class="control-btn" aria-label="Expand view"><i class="fas fa-expand"></i></button>
+                        </div>
+                    </div>
+                    <div class="camera-feed premium">
+                        <div class="feed-header">
+                            <h3>Back Garden</h3>
+                            <span class="status active">Live</span>
+                        </div>
+                        <div class="feed-video">
+                            <img src="https://via.placeholder.com/400x300/16213e/ffffff?text=Back+Garden" alt="Back Garden">
+                        </div>
+                        <div class="feed-controls">
+                            <button type="button" class="control-btn" aria-label="Play stream"><i class="fas fa-play"></i></button>
+                            <button type="button" class="control-btn" aria-label="Stop stream"><i class="fas fa-stop"></i></button>
+                            <button type="button" class="control-btn" aria-label="Expand view"><i class="fas fa-expand"></i></button>
+                        </div>
+                    </div>
+                    <div class="camera-feed premium">
+                        <div class="feed-header">
+                            <h3>Garage Access</h3>
+                            <span class="status inactive">Offline</span>
+                        </div>
+                        <div class="feed-video offline">
+                            <img src="https://via.placeholder.com/400x300/0f3460/ffffff?text=Garage+Offline" alt="Garage">
+                        </div>
+                        <div class="feed-controls">
+                            <button type="button" class="control-btn disabled" aria-label="Play stream" disabled><i class="fas fa-play"></i></button>
+                            <button type="button" class="control-btn disabled" aria-label="Stop stream" disabled><i class="fas fa-stop"></i></button>
+                            <button type="button" class="control-btn" aria-label="Expand view"><i class="fas fa-expand"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Insights Section -->
+            <section id="ai" class="section">
+                <div class="ai-container">
+                    <div class="ai-card premium">
+                        <h3>Neural Network Status</h3>
+                        <div id="aiStatus" class="ai-stats">Loading...</div>
+                        <button id="trainModel" type="button" class="elite-btn" aria-label="Train AI Model">Train Model</button>
+                    </div>
+                    <div class="ai-card premium">
+                        <h3>Data Analysis</h3>
+                        <textarea id="dataInput" placeholder="Enter data points (JSON array)"></textarea>
+                        <button id="analyzeData" type="button" class="elite-btn" aria-label="Analyze Data Patterns">Analyze Patterns</button>
+                        <div id="analysisResults" class="results hidden"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chat Section -->
+            <section id="chat" class="section">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <h3>Elite Concierge Assistant</h3>
+                        <p>Your personal AI concierge for premium services</p>
+                    </div>
+                    <div id="chatMessages" class="chat-messages"></div>
+                    <div class="chat-input">
+                        <input type="text" id="chatInput" placeholder="Ask your concierge...">
+                        <button id="sendMessage" type="button" class="elite-btn" aria-label="Send Message">Send</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section">
+                <div class="contact-form premium">
+                    <h2>Elite Concierge Services</h2>
+                    <p>Request personalized assistance from our dedicated team.</p>
+                    <form id="contactForm">
+                        <input type="text" name="name" placeholder="Full Name" required>
+                        <input type="email" name="email" placeholder="Email Address" required>
+                        <textarea name="message" placeholder="Your Request (e.g., Travel Arrangements, Security Consultation)" required></textarea>
+                        <button type="submit" class="elite-btn full-width">Submit Request</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

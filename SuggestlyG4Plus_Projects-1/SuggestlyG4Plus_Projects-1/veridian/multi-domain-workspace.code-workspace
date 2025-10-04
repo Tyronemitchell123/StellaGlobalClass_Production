@@ -1,0 +1,47 @@
+{
+  "folders": [
+    {
+      "name": "OnTarget Couriers",
+      "path": "./domains/ontargetcouriers"
+    },
+    {
+      "name": "Velocities",
+      "path": "./domains/velocities"
+    },
+    {
+      "name": "OnTarget Web Design",
+      "path": "./domains/ontargetwebdesign"
+    },
+    {
+      "name": "Shared Services",
+      "path": "./shared"
+    },
+    {
+      "name": "Infrastructure",
+      "path": "./infrastructure"
+    },
+    {
+      "name": "Monitoring",
+      "path": "./monitoring"
+    }
+  ],
+  "settings": {
+    "typescript.preferences.workspaceSymbols.scope": "currentProject",
+    "eslint.workingDirectories": [
+      "./domains/ontargetcouriers",
+      "./domains/velocities",
+      "./domains/ontargetwebdesign",
+      "./shared"
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-vscode.vscode-typescript-next",
+      "bradlc.vscode-tailwindcss",
+      "ms-python.python",
+      "ms-azuretools.vscode-docker",
+      "eamodio.gitlens",
+      "github.copilot"
+    ]
+  }
+}

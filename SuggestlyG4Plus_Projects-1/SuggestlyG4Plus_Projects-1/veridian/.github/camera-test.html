@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Camera Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #222;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    video {
+      width: 80vw;
+      max-width: 600px;
+      border-radius: 12px;
+      background: black;
+    }
+    #status {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #f88;
+    }
+  </style>
+</head>
+<body>
+  <h1>Camera Test</h1>
+  <video id="video" muted playsinline></video>
+  <div id="status">Initializing camera...</div>
+  <script>
+    const video = document.getElementById('video');
+    const status = document.getElementById('status');
+
+    async function startCamera() {
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        status.textContent = 'Camera API not supported in this browser.';
+        console.error('Camera API not supported.');
+        return;
+      }
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+        status.textContent = 'Camera active';
+        console.log('Camera stream started successfully.');
+      } catch (error) {
+        status.textContent = 'Camera access denied or unavailable: ' + error.message;
+        console.error('Error accessing camera:', error);
+      }
+    }
+
+    startCamera();
+  </script>
+</body>
+</html>

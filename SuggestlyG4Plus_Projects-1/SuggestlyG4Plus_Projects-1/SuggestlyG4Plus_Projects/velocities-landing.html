@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Velocities - Luxury Chauffeur Service</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #1a202c, #2c5282, #6b46c1);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header, footer {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .btn-primary, .btn-secondary {
+      padding: 0.75rem 1.5rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary {
+      background-color: #6b46c1;
+      color: white;
+    }
+    .btn-primary:hover {
+      background-color: #553c9a;
+    }
+    .btn-secondary {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+    .btn-secondary:hover {
+      background-color: white;
+      color: #6b46c1;
+    }
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .service-card {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 1rem;
+      flex: 1 1 250px;
+      max-width: 300px;
+      text-align: center;
+    }
+    .service-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+    footer p {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Velocities</h1>
+    <p>Luxury Chauffeur Service Redefined</p>
+  </header>
+  <main>
+    <section>
+      <p>Experience premium transportation with our fleet of luxury vehicles and professional chauffeurs. Arrive in style, comfort, and absolute reliability.</p>
+      <div>
+        <button class="btn-primary">Book Your Ride</button>
+        <button class="btn-secondary">View Fleet</button>
+      </div>
+    </section>
+    <section>
+      <h2>Our Premium Services</h2>
+      <p>From airport transfers to corporate events, we provide exceptional chauffeur services tailored to your specific needs.</p>
+      <div class="services">
+        <div class="service-card">
+          <h3>Airport Transfers</h3>
+          <p>Reliable and timely airport transportation with meet and greet service.</p>
+        </div>
+        <div class="service-card">
+          <h3>Corporate Events</h3>
+          <p>Professional chauffeur services for your business meetings and events.</p>
+        </div>
+        <div class="service-card">
+          <h3>Special Occasions</h3>
+          <p>Arrive in style for weddings, parties, and other special events.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>© 2024 Velocities Ltd. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+  </footer>
+</body>
+</html>

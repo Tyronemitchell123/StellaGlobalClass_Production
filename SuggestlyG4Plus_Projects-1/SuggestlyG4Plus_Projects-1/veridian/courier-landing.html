@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnTarget Couriers - Premium & Secure Delivery</title>
+    <style>
+        :root {
+            --primary-color: #0a2e5c;
+            --secondary-color: #c5b358;
+            --text-color: #333;
+            --bg-color: #f4f4f9;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        .header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        .header h1 span {
+            color: var(--secondary-color);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        .hero {
+            background: white url('https://images.unsplash.com/photo-1587560699334-cc426240a24f?q=80&w=2070') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 46, 92, 0.7);
+            border-radius: 10px;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .cta-button {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            background: #d4c26a;
+            transform: translateY(-3px);
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .feature-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            background: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>OnTarget <span>Couriers</span></h1>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Swift, Secure, and On-Target Delivery</h2>
+                <p>Your trusted partner for premium courier services. We deliver with precision and care.</p>
+                <a href="#contact" class="cta-button">Request a Shipment</a>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <h3>Same-Day Delivery</h3>
+                <p>Urgent shipments delivered today. We prioritize speed without compromising on safety.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Secure & Insured</h3>
+                <p>Peace of mind with real-time tracking and comprehensive insurance for all your valuable items.</p>
+            </div>
+            <div class="feature-card">
+                <h3>White-Glove Service</h3>
+                <p>Specialized handling for sensitive and high-value goods, managed by our expert team.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer" id="contact">
+        <p>&copy; 2025 Veridian Private Concierge. All Rights Reserved.</p>
+        <p>Contact us for bespoke delivery solutions.</p>
+    </footer>
+</body>
+</html>

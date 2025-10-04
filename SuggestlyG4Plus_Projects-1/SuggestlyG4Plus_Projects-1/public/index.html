@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stella Global Class - Production Server</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated background particles */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 30px;
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.3);
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 60px;
+            animation: slideUp 0.8s ease-out;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: #555;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 35px;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .feature-card:hover .feature-icon {
+            animation: spin 0.6s ease-in-out;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.2); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .feature-desc {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .section {
+            margin-top: 60px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .endpoint-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .endpoint-item {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 25px 30px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            border: 2px solid #e9ecef;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .endpoint-item:hover {
+            transform: translateX(10px);
+            border-color: #667eea;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .endpoint-path {
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            font-size: 18px;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .endpoint-desc {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .visit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visit-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .visit-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .visit-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .visit-btn:active {
+            transform: scale(0.95);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 2px solid #e9ecef;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 25px;
+            }
+
+            .logo {
+                font-size: 42px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 26px;
+            }
+
+            .endpoint-item {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🚀 Stella Global Class</div>
+            <div class="subtitle">Production Server Dashboard</div>
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                Server Running
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <span class="feature-icon">🌐</span>
+                <div class="feature-title">Global Class Architecture</div>
+                <div class="feature-desc">Enterprise-grade infrastructure designed for global scalability and performance.</div>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🔒</span>
+                <div class="feature-title">Enterprise Security</div>
+                <div class="feature-desc">Advanced security features with helmet.js protection and CORS configuration.</div>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">📊</span>
+                <div class="feature-title">Real-time Monitoring</div>
+                <div class="feature-desc">Comprehensive metrics and health checks for production monitoring.</div>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">⚡</span>
+                <div class="feature-title">Auto-Scaling</div>
+                <div class="feature-desc">Intelligent auto-scaling capabilities for handling variable loads.</div>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">💎</span>
+                <div class="feature-title">Premium Features</div>
+                <div class="feature-desc">Access to premium analytics, advanced monitoring, and 24/7 support.</div>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🏗️</span>
+                <div class="feature-title">Multi-Domain Support</div>
+                <div class="feature-desc">Manage multiple domains with integrated routing and configuration.</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Available API Endpoints</div>
+            <div class="endpoint-list">
+                <div class="endpoint-item">
+                    <div>
+                        <div class="endpoint-path">/health</div>
+                        <div class="endpoint-desc">Server health check and status</div>
+                    </div>
+                    <a href="/health" class="visit-btn">Visit</a>
+                </div>
+
+                <div class="endpoint-item">
+                    <div>
+                        <div class="endpoint-path">/api/premium</div>
+                        <div class="endpoint-desc">Premium features and capabilities</div>
+                    </div>
+                    <a href="/api/premium" class="visit-btn">Visit</a>
+                </div>
+
+                <div class="endpoint-item">
+                    <div>
+                        <div class="endpoint-path">/api/metrics</div>
+                        <div class="endpoint-desc">Server performance metrics</div>
+                    </div>
+                    <a href="/api/metrics" class="visit-btn">Visit</a>
+                </div>
+
+                <div class="endpoint-item">
+                    <div>
+                        <div class="endpoint-path">/api/domains</div>
+                        <div class="endpoint-desc">Available domains and their status</div>
+                    </div>
+                    <a href="/api/domains" class="visit-btn">Visit</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Domain Landing Pages</div>
+            <div class="endpoint-list">
+                <div class="endpoint-item">
+                    <div>
+                        <div class="endpoint-path">/velocities</div>
+                        <div class="endpoint-desc">🚗 Luxury Chauffeur Service landing page</div>
+                    </div>
+                    <a href="/velocities" class="visit-btn">Visit</a>
+                </div>
+
+                <div class="endpoint-item">
+                    <div>
+                        <div class="endpoint-path">/concierge</div>
+                        <div class="endpoint-desc">💼 Premium Concierge Service landing page</div>
+                    </div>
+                    <a href="/concierge" class="visit-btn">Visit</a>
+                </div>
+
+                <div class="endpoint-item">
+                    <div>
+                        <div class="endpoint-path">/veridian</div>
+                        <div class="endpoint-desc">💎 Veridian Premium Services landing page</div>
+                    </div>
+                    <a href="/veridian" class="visit-btn">Visit</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Stella Global Class Production Server v1.0.0</strong></p>
+            <p>Running on Node.js with Express.js</p>
+            <p style="margin-top: 10px; color: #bbb;">Powered by cutting-edge technology</p>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced button interactions
+        document.querySelectorAll('.visit-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1)';
+            });
+
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+
+            btn.addEventListener('click', function(e) {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1.1)';
+                }, 100);
+            });
+        });
+
+        // Real-time health check with visual feedback
+        setInterval(() => {
+            fetch('/health')
+                .then(response => response.json())
+                .then(data => {
+                    const badge = document.querySelector('.status-badge');
+                    if (data.status === 'OK') {
+                        badge.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+                    }
+                })
+                .catch(() => {
+                    const badge = document.querySelector('.status-badge');
+                    badge.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
+                    badge.innerHTML = '<span class="status-dot"></span> Connection Error';
+                });
+        }, 5000);
+
+        // Add parallax effect to feature cards
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.feature-card');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            cards.forEach((card, index) => {
+                const speed = (index + 1) * 0.5;
+                const xOffset = (x - 0.5) * speed;
+                const yOffset = (y - 0.5) * speed;
+                card.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

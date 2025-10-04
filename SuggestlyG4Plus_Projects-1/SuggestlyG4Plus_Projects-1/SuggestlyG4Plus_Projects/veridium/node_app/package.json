@@ -1,0 +1,22 @@
+{
+  "name": "veridium-node-app",
+  "version": "1.0.0",
+  "description": "Node.js backend for Veridium AI Concierge Platform",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "body-parser": "^1.20.2",
+    "@modelcontextprotocol/sdk": "^0.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": ["ai", "mcp", "concierge", "veridium"],
+  "author": "Veridium Team",
+  "license": "MIT"
+}

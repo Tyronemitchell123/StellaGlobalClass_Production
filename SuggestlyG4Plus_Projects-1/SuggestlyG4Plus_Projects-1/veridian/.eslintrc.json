@@ -1,0 +1,35 @@
+{
+  "extends": [
+    "standard"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module"
+  },
+  "env": {
+    "node": true,
+    "es2022": true,
+    "jest": true
+  },
+  "rules": {
+    "no-console": "warn",
+    "prefer-const": "error",
+    "no-unused-vars": "error",
+    "semi": ["error", "always"],
+    "quotes": ["error", "double"],
+    "indent": ["error", 2],
+    "space-before-function-paren": ["error", {
+      "anonymous": "always",
+      "named": "never",
+      "asyncArrow": "always"
+    }]
+  },
+  "overrides": [
+    {
+      "files": ["*.test.js", "test-*.js"],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
+}

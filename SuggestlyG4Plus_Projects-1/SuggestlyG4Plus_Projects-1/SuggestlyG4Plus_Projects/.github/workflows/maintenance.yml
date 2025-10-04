@@ -1,0 +1,243 @@
+name: Maintenance Tasks
+
+on:
+  schedule:
+    - cron: '0 2 * * 1'  # Every Monday at 2 AM UTC
+  workflow_dispatch:
+    inputs:
+      update-dependencies:
+        description: 'Update dependencies'
+        required: false
+        default: 'true'
+        type: boolean
+      run-security-check:
+        description: 'Run security check'
+        required: false
+        default: 'true'
+        type: boolean
+
+jobs:
+  update-dependencies:
+    name: Update Dependencies
+    runs-on: ubuntu-latest
+    if: github.event.inputs.update-dependencies != 'false'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Update npm dependencies
+      run: npm update
+    
+    - name: Check for outdated packages
+      run: npm outdated
+    
+    - name: Run security fix
+      run: npm run security:fix
+    
+    - name: Commit dependency updates
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: 'chore: update dependencies'
+        file_pattern: 'package*.json'
+
+  security-health-check:
+    name: Security Health Check
+    runs-on: ubuntu-latest
+    if: github.event.inputs.run-security-check != 'false'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run comprehensive security audit
+      run: npm audit --audit-level=moderate --json
+    
+    - name: Check for known vulnerabilities
+      run: npm audit fix --dry-run
+    
+    - name: Generate security report
+      run: |
+        echo "# Security Health Check Report" > security-report.md
+        echo "Generated on: $(date)" >> security-report.md
+        echo "" >> security-report.md
+        echo "## Vulnerability Summary" >> security-report.md
+        npm audit --json | jq -r '.advisories | to_entries[] | "\n### \(.key): \(.value.severity)\n- **Module**: \(.value.module_name)\n- **Affected versions**: \(.value.vulnerable_versions)\n- **Patched in**: \(.value.patched_versions)\n- **Recommendation**: \(.value.recommendation)"' >> security-report.md
+    
+    - name: Upload security report
+      uses: actions/upload-artifact@v4
+      with:
+        name: security-report
+        path: security-report.md
+        retention-days: 30
+
+  code-quality-check:
+    name: Code Quality Check
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run ESLint with detailed output
+      run: npm run lint -- --format json > eslint-report.json
+    
+    - name: Generate code quality report
+      run: |
+        echo "# Code Quality Report" > code-quality-report.md
+        echo "Generated on: $(date)" >> code-quality-report.md
+        echo "" >> code-quality-report.md
+        echo "## ESLint Results" >> code-quality-report.md
+        if [ -s eslint-report.json ]; then
+          cat eslint-report.json | jq -r '.[] | "\n### \(.filePath)\n- **Error count**: \(.errorCount)\n- **Warning count**: \(.warningCount)\n- **Fixable**: \(.fixableErrorCount) errors, \(.fixableWarningCount) warnings"' >> code-quality-report.md
+        else
+          echo "No ESLint issues found!" >> code-quality-report.md
+        fi
+    
+    - name: Upload code quality report
+      uses: actions/upload-artifact@v4
+      with:
+        name: code-quality-report
+        path: code-quality-report.md
+        retention-days: 30
+
+  performance-benchmark:
+    name: Performance Benchmark
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run performance tests
+      run: |
+        echo "# Performance Benchmark Report" > performance-report.md
+        echo "Generated on: $(date)" >> performance-report.md
+        echo "" >> performance-report.md
+        echo "## Application Performance" >> performance-report.md
+        echo "" >> performance-report.md
+        echo "### Startup Time" >> performance-report.md
+        time npm start &
+        sleep 5
+        pkill -f "node.*mcp-server.js"
+        echo "Startup time measured" >> performance-report.md
+        echo "" >> performance-report.md
+        echo "### Memory Usage" >> performance-report.md
+        npm start &
+        APP_PID=$!
+        sleep 3
+        ps -p $APP_PID -o rss= >> performance-report.md
+        pkill -f "node.*mcp-server.js"
+        echo "" >> performance-report.md
+        echo "### Test Performance" >> performance-report.md
+        npm run test:comprehensive >> performance-report.md 2>&1
+    
+    - name: Upload performance report
+      uses: actions/upload-artifact@v4
+      with:
+        name: performance-report
+        path: performance-report.md
+        retention-days: 30
+
+  create-maintenance-summary:
+    name: Create Maintenance Summary
+    runs-on: ubuntu-latest
+    needs: [update-dependencies, security-health-check, code-quality-check, performance-benchmark]
+    if: always()
+    
+    steps:
+    - name: Download all artifacts
+      uses: actions/download-artifact@v4
+    
+    - name: Create maintenance summary
+      run: |
+        echo "# Maintenance Summary" > maintenance-summary.md
+        echo "Generated on: $(date)" >> maintenance-summary.md
+        echo "" >> maintenance-summary.md
+        echo "## Tasks Completed" >> maintenance-summary.md
+        echo "" >> maintenance-summary.md
+        
+        if [ -f "security-report/security-report.md" ]; then
+          echo "### ✅ Security Health Check" >> maintenance-summary.md
+          echo "- Security audit completed" >> maintenance-summary.md
+          echo "- Vulnerability report generated" >> maintenance-summary.md
+          echo "" >> maintenance-summary.md
+        fi
+        
+        if [ -f "code-quality-report/code-quality-report.md" ]; then
+          echo "### ✅ Code Quality Check" >> maintenance-summary.md
+          echo "- ESLint analysis completed" >> maintenance-summary.md
+          echo "- Code quality report generated" >> maintenance-summary.md
+          echo "" >> maintenance-summary.md
+        fi
+        
+        if [ -f "performance-report/performance-report.md" ]; then
+          echo "### ✅ Performance Benchmark" >> maintenance-summary.md
+          echo "- Performance tests completed" >> maintenance-summary.md
+          echo "- Benchmark report generated" >> maintenance-summary.md
+          echo "" >> maintenance-summary.md
+        fi
+        
+        echo "## Next Steps" >> maintenance-summary.md
+        echo "- Review all generated reports" >> maintenance-summary.md
+        echo "- Address any critical issues found" >> maintenance-summary.md
+        echo "- Schedule follow-up maintenance if needed" >> maintenance-summary.md
+    
+    - name: Upload maintenance summary
+      uses: actions/upload-artifact@v4
+      with:
+        name: maintenance-summary
+        path: maintenance-summary.md
+        retention-days: 90
+    
+    - name: Comment on issue if run manually
+      if: github.event_name == 'workflow_dispatch'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          const summary = fs.readFileSync('maintenance-summary.md', 'utf8');
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `## Maintenance Complete 🎉\n\n${summary}`
+          });

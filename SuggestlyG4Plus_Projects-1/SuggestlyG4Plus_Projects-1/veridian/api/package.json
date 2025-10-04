@@ -1,0 +1,34 @@
+{
+  "name": "veridian-contact-api",
+  "version": "1.0.0",
+  "description": "Veridian Private Concierge Contact Form API - Sends form submissions to tye3to1@outlook.com",
+  "main": "contact-form.js",
+  "scripts": {
+    "start": "node contact-form.js",
+    "dev": "nodemon contact-form.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "veridian",
+    "contact-form",
+    "api",
+    "nodemailer",
+    "express"
+  ],
+  "author": "Veridian Development Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "nodemailer": "^6.9.7",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

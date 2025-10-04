@@ -1,0 +1,96 @@
+{
+  "name": "multi-domain-business-ecosystem",
+  "version": "1.0.0",
+  "description": "AI-powered multi-domain business ecosystem for courier, chauffeur, and web design services",
+  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "domains/ontargetcouriers",
+    "domains/velocities",
+    "domains/ontargetwebdesign",
+    "shared/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:ontargetcouriers\" \"npm run dev:velocities\" \"npm run dev:ontargetwebdesign\" \"npm run dev:shared\"",
+    "dev:ontargetcouriers": "cd domains/ontargetcouriers && npm run dev",
+    "dev:velocities": "cd domains/velocities && npm run dev",
+    "dev:ontargetwebdesign": "cd domains/ontargetwebdesign && npm run dev",
+    "dev:shared": "cd shared/api-gateway && npm run dev",
+    "build": "npm run build:shared && npm run build:domains",
+    "build:shared": "cd shared && npm run build",
+    "build:domains": "npm run build:ontargetcouriers && npm run build:velocities && npm run build:ontargetwebdesign",
+    "build:ontargetcouriers": "cd domains/ontargetcouriers && npm run build",
+    "build:velocities": "cd domains/velocities && npm run build",
+    "build:ontargetwebdesign": "cd domains/ontargetwebdesign && npm run build",
+    "test": "npm run test:shared && npm run test:domains",
+    "test:shared": "cd shared && npm test",
+    "test:domains": "npm run test:ontargetcouriers && npm run test:velocities && npm run test:ontargetwebdesign",
+    "test:ontargetcouriers": "cd domains/ontargetcouriers && npm test",
+    "test:velocities": "cd domains/velocities && npm test",
+    "test:ontargetwebdesign": "cd domains/ontargetwebdesign && npm test",
+    "lint": "npm run lint:shared && npm run lint:domains",
+    "lint:shared": "cd shared && npm run lint",
+    "lint:domains": "npm run lint:ontargetcouriers && npm run lint:velocities && npm run lint:ontargetwebdesign",
+    "lint:ontargetcouriers": "cd domains/ontargetcouriers && npm run lint",
+    "lint:velocities": "cd domains/velocities && npm run lint",
+    "lint:ontargetwebdesign": "cd domains/ontargetwebdesign && npm run lint",
+    "install:all": "npm install && npm run install:shared && npm run install:domains",
+    "install:shared": "cd shared && npm install",
+    "install:domains": "cd domains && npm run install:ontargetcouriers && npm run install:velocities && npm run install:ontargetwebdesign",
+    "install:ontargetcouriers": "cd ontargetcouriers && npm install",
+    "install:velocities": "cd velocities && npm install",
+    "install:ontargetwebdesign": "cd ontargetwebdesign && npm install",
+    "docker:build": "docker-compose -f infrastructure/docker-compose.yml build",
+    "docker:up": "docker-compose -f infrastructure/docker-compose.yml up -d",
+    "docker:down": "docker-compose -f infrastructure/docker-compose.yml down",
+    "k8s:deploy": "kubectl apply -f infrastructure/kubernetes/",
+    "k8s:destroy": "kubectl delete -f infrastructure/kubernetes/",
+    "setup": "npm run install:all && npm run docker:build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "keywords": [
+    "multi-domain",
+    "ai-powered",
+    "courier",
+    "chauffeur",
+    "web-design",
+    "business-ecosystem",
+    "nextjs",
+    "typescript",
+    "ai",
+    "machine-learning"
+  ],
+  "author": "SuggestlyG4Plus Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "dependencies": {
+    "compression": "^1.8.1",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "helmet": "^8.1.0",
+    "morgan": "^1.10.1",
+    "zod": "^4.1.11"
+  }
+}
