@@ -1,11 +1,14 @@
 {
-  "framework": null,
-  "buildCommand": "echo 'Build skipped'",
-  "outputDirectory": ".",
-  "rewrites": [
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "domains/newdomain/package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "domains/newdomain/$1"
     }
   ]
 }
