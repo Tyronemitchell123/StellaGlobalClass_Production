@@ -1,0 +1,11 @@
+{
+  "framework": null,
+  "buildCommand": "echo 'Build skipped'",
+  "outputDirectory": ".",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
