@@ -1,0 +1,43 @@
+{
+	"folders": [
+		{
+			"path": "../../../.github"
+		},
+		{
+			"path": "../../../.history"
+		},
+		{
+			"path": "../../../.vercel"
+		},
+		{
+			"path": "../../../.vscode"
+		},
+		{
+			"path": "../../../DMG COURT"
+		},
+		{
+			"path": "../../../domains"
+		},
+		{
+			"path": "../../../node_modules"
+		},
+		{
+			"path": "../../../public"
+		},
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../SuggestlyG4Plus_Projects"
+		},
+		{
+			"path": "../../../tests"
+		},
+		{
+			"path": "../../../veridian"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "StellaGlobalClass_Production"
+	}
+}
