@@ -1,14 +1,19 @@
 {
+  "version": 2,
   "builds": [
     {
-      "src": "SuggestlyG4Plus_Projects-1/domains/newdomain/package.json",
-      "use": "@vercel/next"
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "."
+      }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "SuggestlyG4Plus_Projects-1/domains/newdomain/$1"
+      "dest": "/$1"
     }
-  ]
+  ],
+  "outputDirectory": "."
 }
