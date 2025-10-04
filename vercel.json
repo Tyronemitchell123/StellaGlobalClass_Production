@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "SuggestlyG4Plus_Projects-1/domains/newdomain/package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "SuggestlyG4Plus_Projects-1/domains/newdomain/$1"
+    }
+  ]
+}
