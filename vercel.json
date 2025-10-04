@@ -1,14 +1,3 @@
 {
-   "version": 2,
-   "builds": [
-     {
-       "src": "SuggestlyG4Plus_Projects-1/domains/newdomain/package.json",
-       "use": "@vercel/next"
-     }
-   ],
-   "functions": {
-     "SuggestlyG4Plus_Projects-1/domains/newdomain/app/**/*.js": {
-       "runtime": "nodejs18.x"
-     }
-   }
+  "version": 2
 }
